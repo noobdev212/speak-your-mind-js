@@ -1,18 +1,11 @@
 import { Routes, Route } from 'react-router'
-import { getSync, postAck } from './services/TestService.ts'
+import SignPage from './pages/SignPage'
 
 function App() {
-  getSync().then(response => {
-    console.log(JSON.stringify(response));
-  }).catch(err => console.error(err));
-
-  postAck().then(response => {
-    console.log(JSON.stringify(response));
-  }).catch(err => console.error(err));
-
   return (
     <Routes>
-      <Route path='/' element={<h1>hello</h1>}/>
+      <Route path='/register' element={<SignPage/>}/>
+      <Route path='/login' element={<SignPage/>}/>
     </Routes>
   )
 }
