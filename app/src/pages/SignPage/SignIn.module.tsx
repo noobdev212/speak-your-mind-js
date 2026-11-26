@@ -1,6 +1,6 @@
 import Form from '../../components/Form'
 import { useState } from 'react'
-import { login } from '../../services/UserService.ts'
+import { login } from '../../services/rest/UserService.ts'
 import { useNavigate } from 'react-router'
 
 export default function SignIn() {
