@@ -1,7 +1,7 @@
 import Form from '../../components/Form'
 import { useState } from 'react'
 import { useNavigate } from 'react-router'
-import { register }from '../../services/UserService.ts'
+import { register }from '../../services/rest/UserService.ts'
 
 export default function SignUp() {
   const [inputs, setInputs] = useState(['', '']);
