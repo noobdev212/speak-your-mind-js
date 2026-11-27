@@ -25,7 +25,7 @@ export default function SignIn() {
               localStorage.setItem('id', response.payload.id);
               localStorage.setItem('email', response.payload.email);
               localStorage.setItem('role', response.payload.role);
-              navigate('/');
+              navigate('/chat');
             }).catch(err => console.error(err));
           }}>
             LOG IN
