@@ -8,12 +8,14 @@ export default function useSocket(url) {
   useEffect(() => {
     let reconnectTimer;
     let isUnmounted = false;
-    function connect() {
 
+    function connect() {
       const ws = new WebSocket(url);
       socketRef.current = ws;
 
-      ws.onopen = () => setStatus('connected');
+      ws.onopen = () => {
+        setStatus('connected');
+      }
       ws.onmessage = (event) => {
         try {
           const data = JSON.parse(event.data);
@@ -26,6 +28,7 @@ export default function useSocket(url) {
           console.log('Unable to read message');
         }
       };
+
       ws.onclose = () => {
         setStatus('disconnected');
         if (!isUnmounted) {
