@@ -27,7 +27,7 @@ socket.on('connection', (ws) => {
         members.get(ws.uuid).push(msg.groupId);
       }
 
-      console.log(groups.get(msg.groupId));
+      console.log(groups);
       for (let id = 0; id < groups.get(msg.groupId).length; id++) {
         client.get(groups.get(msg.groupId)[id]).send(JSON.stringify({ text: msg.text }));
       }
@@ -38,10 +38,12 @@ socket.on('connection', (ws) => {
 
   ws.on('close', () => {
     console.log('Client disconnected');
+    console.log(groups);
     for (let id = 0; id < members.get(ws.uuid).length; id++) {
       let gr = members.get(ws.uuid)[id];
       groups.set(gr, groups.get(gr).filter(ids => ids != ws.uuid));
     }
+    console.log(groups);
   });
   ws.on('error', console.error);
 });
